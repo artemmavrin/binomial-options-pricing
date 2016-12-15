@@ -9,18 +9,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define USAGE "\
-Price American put options\n\
-Usage:\tpapo T S0 u d K r\n\
-\tT\tExpiration time\n\
-\tS0\tInitial stock price\n\
-\tu\tUp factor\n\
-\td\tDown factor\n\
-\tK\tStrike price\n\
-\tr\tRisk-free interest rate\n"
+#define PROGRAM_NAME "papo"
+#define PROGRAM_DESCRIPTION "Price American put options"
 
-#define TREESIZE(T) ((1 << ((T) + 1)) - 1)
-#define MAX(x, y)   ((x) > (y) ? (x) : (y))
+#include "bop_util.h"
 
 double papo(
     long T,         /* Option expiration time */
@@ -88,28 +80,4 @@ end:
     return U0;
 }
 
-int main(int argc, const char **argv) {
-    long T;         /* Option expiration time */
-    double S0;      /* Initial stock price */
-    double u;       /* Up factor */
-    double d;       /* Down factor */
-    double K;       /* Option strike price */
-    double r;       /* Risk-free interest rate */
-
-    /* Make sure all the arguments are present */
-    if (--argc != 6) {
-        (void) fprintf(stderr, USAGE);
-        return EXIT_FAILURE;
-    }
-
-    /* Parse the command-line arguments */
-    T = atol(argv[1]);
-    S0 = atof(argv[2]);
-    u = atof(argv[3]);
-    d = atof(argv[4]);
-    K = atof(argv[5]);
-    r = atof(argv[6]);
-
-    /* Print the arbitrage-free initial price */
-    (void) printf("%f\n", papo(T, S0, u, d, K, r));
-}
+MAIN(papo)
