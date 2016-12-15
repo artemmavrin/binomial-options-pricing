@@ -41,6 +41,12 @@ double peco(
     S = malloc(TREESIZE(T) * sizeof(double));
     V = malloc(TREESIZE(T) * sizeof(double));
 
+    /* Check if any of the allocations failed */
+    if (!S || !V) {
+        V0 = -1;
+        goto end;
+    }
+
     /* Build the stock price process binary tree */
     S[0] = S0;
     for (i = 1; i < TREESIZE(T); i++) {
@@ -68,8 +74,11 @@ double peco(
 
     /* Clean up and return the arbitrage-free initial price */
     V0 = V[0];
-    free(S);
-    free(V);
+end:
+    if (S)
+        free(S);
+    if (V)
+        free(V);
     return V0;
 }
 

@@ -43,6 +43,12 @@ double papo(
     Y = malloc(TREESIZE(T) * sizeof(double));
     U = malloc(TREESIZE(T) * sizeof(double));
 
+    /* Check if any of the allocations failed */
+    if (!S || !Y || !U) {
+        U0 = -1;
+        goto end;
+    }
+
     /* Build binary trees for the stock price process and the payoff process */
     S[0] = S0;
     Y[0] = MAX(K - S[0], 0);
@@ -72,9 +78,13 @@ double papo(
 
     /* Clean up and return the arbitrage-free initial price */
     U0 = U[0];
-    free(S);
-    free(Y);
-    free(U);
+end:
+    if (S)
+        free(S);
+    if (Y)
+        free(Y);
+    if (U)
+        free(U);
     return U0;
 }
 
