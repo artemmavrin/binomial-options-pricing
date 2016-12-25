@@ -40,6 +40,8 @@ int main(int argc, const char **argv) { \
 \
     /* Print the arbitrage-free initial price */ \
     (void) printf("%f\n", func(T, S0, u, d, K, r)); \
+\
+    return EXIT_SUCCESS; \
 }
 
 #endif
