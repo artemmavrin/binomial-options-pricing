@@ -11,4 +11,4 @@ Running the programs with no arguments will show usage instructions.
 ## References
 
 1. S. Shreve, *Stochastic Calculus for Finance I: The Binomial Asset Pricing Model*, Springer, 2004
-2. R.J. Williams, *Introduction to the Mathematics of Finance*, American Mathematical Society, 2006
+2. R.J. Williams, [*Introduction to the Mathematics of Finance*](http://dx.doi.org/10.1090/gsm/072), American Mathematical Society, 2006
