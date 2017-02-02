@@ -4,7 +4,7 @@ CFLAGS=-g -Wall -Wextra -Werror -pedantic
 
 default: papo peco
 
-%: %.c bop_util.h
+%: %.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
