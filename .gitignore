@@ -1,8 +1,2 @@
 papo
 peco
-*.swp
-*.DSYM
-.DS_Store
-
-.idea
-CMakeLists.txt
